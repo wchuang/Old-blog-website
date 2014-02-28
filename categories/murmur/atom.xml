@@ -2,9 +2,9 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: Murmur | wchuang's Blog]]></title>
-  <link href="http://wchuang.github.io/blog/categories/murmur/atom.xml" rel="self"/>
+  <link href="http://wchuang.github.io/categories/murmur/atom.xml" rel="self"/>
   <link href="http://wchuang.github.io/"/>
-  <updated>2014-02-28T16:20:44+08:00</updated>
+  <updated>2014-02-28T16:57:12+08:00</updated>
   <id>http://wchuang.github.io/</id>
   <author>
     <name><![CDATA[WEI-CHENG HUANG]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[[Murmur] Celebrating the birth of my blog]]></title>
-    <link href="http://wchuang.github.io/blog/2014/02/28/murmur-celebrating-the-birth-of-my-blog/"/>
+    <link href="http://wchuang.github.io/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog/"/>
     <updated>2014-02-28T01:31:28+08:00</updated>
-    <id>http://wchuang.github.io/blog/2014/02/28/murmur-celebrating-the-birth-of-my-blog</id>
+    <id>http://wchuang.github.io/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog</id>
     <content type="html"><![CDATA[<p>由於之前已經玩過 Octopress，本來想說重新翻翻 document，就可以無痛使用，但沒想到毛病還是很多 orz。<!-- more --></p>
 
 <p>先是 bundle install 的時候，發現 ruby 一定要在 1.9.3 以上，由於之前是用 1.9.2，而且滿久沒碰了，所以就<a href="http://goo.gl/SD915S">安裝一下</a>，接著又碰到一堆莫名其妙的問題 囧，像是 brew doctor 跟我說 “Error: /usr/bin occurs before /usr/local/bin”，照著它的建議也沒辦法解決，後來只好直接編輯 /etc/paths，把 /usr/local/bin 擺到 /usr/bin 前面，接著再 brew doctor，看看還有無問題，並照它的建議排除。最後，總算安全上壘惹，<a href="http://goo.gl/BNDdd">設定好對應的 github page</a>，rake generate，rake deploy，並 commit、push。</p>
