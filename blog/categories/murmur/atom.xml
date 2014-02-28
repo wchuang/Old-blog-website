@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[wchuang's Blog]]></title>
-  <link href="http://wchuang.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Murmur | wchuang's Blog]]></title>
+  <link href="http://wchuang.github.io/blog/categories/murmur/atom.xml" rel="self"/>
   <link href="http://wchuang.github.io/"/>
   <updated>2014-02-28T16:20:44+08:00</updated>
   <id>http://wchuang.github.io/</id>
@@ -24,7 +24,7 @@
 
 <p>由於完成後的版面實在太單調，我就換了 <a href="http://goo.gl/9gTiAH">foxslide</a> 這個 theme，再把版面調整我想要的樣子 (背景圖、font 的顏色、大小等)，可是卻發現它的原始設定中 found on 的地方不能放上 facebook，後來只好編輯 source/_includes/custom/asides/found_on.html，並加上 facebook.user 判斷及需要的圖片，<a href="http://goo.gl/SVdZh7">詳細做法</a>。</p>
 
-<p>設定完 twitter user 後，發現那區塊也是爛的！居然一直給我出現 &ldquo;loading tweets…&#8221;，原來是早在去年 twitter API v1 就<a href="http://goo.gl/VxbMYi">退休</a>了，也正式推出 v1.1，而 Unauthenticated requests 這種方式在 v1.1 中是不能用的，官方建議我們改用 <a href="http://goo.gl/znBFr">Embedded Timelines</a> 的方式。</p>
+<p>設定完 twitter user 後，發現那區塊也是爛的！居然一直給我出現 &ldquo;loading tweets…"，原來是早在去年 twitter API v1 就<a href="http://goo.gl/VxbMYi">退休</a>了，也正式推出 v1.1，而 Unauthenticated requests 這種方式在 v1.1 中是不能用的，官方建議我們改用 <a href="http://goo.gl/znBFr">Embedded Timelines</a> 的方式。</p>
 
 <p>P.S. 好家在問題都得以解決，終於可以蓋牌結束這回合。XDD</p>
 ]]></content>
