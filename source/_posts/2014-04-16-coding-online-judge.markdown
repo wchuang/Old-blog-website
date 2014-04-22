@@ -8,7 +8,7 @@ keywords: "code, coding, online judge"
 description: "Intro of online judge"
 ---
 
-* 使用較舊版的 ANSI C compilers (C90?)，不能用單行註解 (//)，需用 (/* ... */)，[Ref.1](http://goo.gl/JQ5E2i)、[Ref.2](http://goo.gl/tlIkva)
+* 使用較舊版的 ANSI C compilers (C90?)，不能用單行註解 (//)，需用 (/* ... */)，[Ref.1](http://goo.gl/JQ5E2i)、[Ref.2](http://goo.gl/tlIkva)<!--more-->
 
 * Compile 時會加入這些參數: `-lm -lcrypt -O2 -pipe -ansi -DONLINE_JUDGE`，前兩個會幫你 link 到要用到的 libraries (math.h and crypt.h)，最後一個幫你定義一個 macro (ONLINE_JUDGE)，所以如果有不想被執行到的地方，可以用 `#ifndef ONLINE_JUDGE {...} #endif` 包住
 
