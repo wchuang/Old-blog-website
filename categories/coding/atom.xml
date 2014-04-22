@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Coding | @wchuang's Blog]]></title>
+  <link href="http://wchuang.github.io/categories/coding/atom.xml" rel="self"/>
+  <link href="http://wchuang.github.io/"/>
+  <updated>2014-04-23T01:30:43+08:00</updated>
+  <id>http://wchuang.github.io/</id>
+  <author>
+    <name><![CDATA[WEI-CHENG HUANG]]></name>
+    <email><![CDATA[wchuang@outlook.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Coding] Online Judge]]></title>
+    <link href="http://wchuang.github.io/post/2014/04/16/coding-online-judge/"/>
+    <updated>2014-04-16T01:16:10+08:00</updated>
+    <id>http://wchuang.github.io/post/2014/04/16/coding-online-judge</id>
+    <content type="html"><![CDATA[<ul>
+<li><p>使用較舊版的 ANSI C compilers (C90?)，不能用單行註解 (//)，需用 (/<em> &hellip; </em>/)，<a href="http://goo.gl/JQ5E2i%E3%80%81http://goo.gl/tlIkva">http://goo.gl/JQ5E2i%E3%80%81http://goo.gl/tlIkva</a></p></li>
+<li><p>Compile 時會加入這些參數: <code>-lm -lcrypt -O2 -pipe -ansi -DONLINE_JUDGE</code>，前兩個會幫你 link 到要用到的 libraries (math.h and crypt.h)，最後一個幫你定義一個 macro (ONLINE_JUDGE)，所以如果有不想被執行到的地方，可以用 <code>#ifndef ONLINE_JUDGE {...} #endif</code> 包住，<a href="http://goo.gl/fWZ0t0">http://goo.gl/fWZ0t0</a></p></li>
+<li><p>題目要以檔案輸入、輸出的方式處理，不要像筆者傻傻的用 <code>scanf()</code> 及 <code>printf()</code> 被退了好幾次 orz</p></li>
+</ul>
+
+
+<hr />
+
+<p>BTW. 兩個查詢 C/C++ 函式庫的地方:</p>
+
+<ul>
+<li><a href="http://goo.gl/h9lGN">http://goo.gl/h9lGN</a></li>
+<li><a href="http://goo.gl/OoQx">http://goo.gl/OoQx</a></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+</feed>

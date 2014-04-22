@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: C | @wchuang's Blog]]></title>
+  <link href="http://wchuang.github.io/categories/c/atom.xml" rel="self"/>
+  <link href="http://wchuang.github.io/"/>
+  <updated>2014-04-23T01:30:43+08:00</updated>
+  <id>http://wchuang.github.io/</id>
+  <author>
+    <name><![CDATA[WEI-CHENG HUANG]]></name>
+    <email><![CDATA[wchuang@outlook.com]]></email>
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[C] Pointers versus Addresses, Arrays and Structs]]></title>
+    <link href="http://wchuang.github.io/post/2014/04/14/c-pointers-versus-addresses/"/>
+    <updated>2014-04-14T16:27:31+08:00</updated>
+    <id>http://wchuang.github.io/post/2014/04/14/c-pointers-versus-addresses</id>
+    <content type="html"><![CDATA[
+]]></content>
+  </entry>
+  
+</feed>
