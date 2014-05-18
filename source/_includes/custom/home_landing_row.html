@@ -1,0 +1,15 @@
+<div id="about-me" class="col-md-offset-3 col-md-6">
+  <h4>about me</h4>
+  <p>我是 Wei-Cheng Huang (wchuang)，開發 iOS / Web 的小碼農，喜歡 Objective-C、Cocoa Design、JavaScript (jQuery) 等，最近對 C/C++、Node.js 頗感興趣，對程式碼縮排有一定程度偏執，目前正被托福糾纏中..偶而會來寫寫文章。<br>I’m an iOS mobile and web developer in Taiwan, appreciating the novel things and challenges. Also, I’m a freelance. If you have any ideas you want to achieve, please contacting me.</p>
+  <div class="social-icon-list">
+  	{% if site.twitter_user %}
+    <a title="Twitter" href="https://twitter.com/{{ site.twitter_user }}"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    {% endif %}
+    {% if site.github_user %}
+    <a title="GitHub" href="https://github.com/{{ site.github_user }}"><img src="/images/glyphicons_social_21_github.png"/></a>
+    {% endif %}
+    {% if site.email %}
+    <a title="E-Mail" href="{{ site.email }}"><img src="/images/glyphicons_social_39_e-mail.png"/></a>
+    {% endif %}
+  </div>
+</div>
