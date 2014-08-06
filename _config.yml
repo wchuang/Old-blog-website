@@ -4,7 +4,7 @@
 
 url: http://wchuang.github.io
 title: "@wchuang's Blog"
-subtitle: 摳得人生
+subtitle: "Believe in yourself when no one else does..."
 author: WEI-CHENG HUANG
 simple_search: http://google.com/search
 description: "wchuang's Blog - [http://blog.wchuang.me/]"
@@ -94,7 +94,7 @@ disqus_short_name:
 disqus_show_comment_count: false
 
 # Google Analytics
-google_analytics_tracking_id:
+google_analytics_tracking_id: "UA-53595104-1"
 
 # Facebook Like
 facebook_like: true
