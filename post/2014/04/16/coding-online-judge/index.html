@@ -3,10 +3,6 @@
 <!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
 <!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
-<!DOCTYPE html>
-<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
-<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
-<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <title>[Coding] Online Judge - @wchuang's Blog</title>
@@ -30,22 +26,46 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
   <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
   
 
 </head>
 
-  <body>
-    <a href="/" class="home-icon">
-      <img src="/images/home.png"/>
-    </a>
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">@wchuang's Blog</a></h1>
+  
+    <h2>摳得人生</h2>
+  
+</hgroup>
 
-    <article role="article" class="full-single-article">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <h1>[Coding] Online Judge</h1>
-        <div class="meta">
-          written 
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">[Coding] Online Judge</h1>
+    
+    
+      <p class="meta">
+        
 
 
 
@@ -55,22 +75,16 @@
 
 
   
-
 
 
 <time datetime="2014-04-16T01:16:10+08:00" pubdate data-updated="true">Apr 16<span>th</span>, 2014</time>
-          
-
-in
-<span class="categories">
-  
-    <a class='category' href='/categories/coding/'>Coding</a>
-  
-</span>
+        
+      </p>
+    
+  </header>
 
 
-        </div>
-        <ul>
+<div class="entry-content"><ul>
 <li><p>使用較舊版的 ANSI C compilers (C90?)，不能用單行註解 <code>//</code>，需用 <code>/* ... */</code>，<a href="http://goo.gl/JQ5E2i">Ref.1</a>、<a href="http://goo.gl/tlIkva">Ref.2</a><!--more--></p></li>
 <li><p>Compile 時會加上這些參數: <code>-lm -lcrypt -O2 -pipe -ansi -DONLINE_JUDGE</code>，前兩個會幫你 link 到要用到的 libraries (math.h and crypt.h)，最後一個幫你定義一個 macro (ONLINE_JUDGE)，所以如果有不想被執行到的地方，可以用 <code>#ifndef ONLINE_JUDGE {...} #endif</code> 包住</p></li>
 <li><p>如果題目沒有說明會有幾筆輸入可以用迴圈包住並偵測輸入資料直到資料的最後一筆</p>
@@ -92,59 +106,192 @@ in
 <li><a href="http://goo.gl/OoQx">cplusplus.com</a></li>
 </ul>
 
+</div>
 
-      </div>
-    </div>
-  </div>
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">WEI-CHENG HUANG</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-16T01:16:10+08:00" pubdate data-updated="true">Apr 16<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/coding/'>Coding</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://wchuang.github.io/post/2014/04/16/coding-online-judge/" data-via="huang_wc" data-counturl="http://wchuang.github.io/post/2014/04/16/coding-online-judge/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/post/2014/04/14/c-pointers-versus-addresses/" title="Previous Post: [C] Pointers versus Addresses, Arrays and Structs">&laquo; [C] Pointers versus Addresses, Arrays and Structs</a>
+      
+      
+    </p>
+  </footer>
 </article>
 
-<hr class="divider-short"/>
+</div>
 
-<div class="archive-link">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        
-          <a class="pull-left" href="/post/2014/04/14/c-pointers-versus-addresses/" title="Previous Post: [C] Pointers versus Addresses, Arrays and Structs">&laquo; Previous: [C] Pointers versus Addresses, Arrays and Structs</a>
-        
+  <aside class="sidebar">
+   
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:wchuang.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/post/2014/04/16/coding-online-judge/">[Coding] Online Judge</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/2014/04/14/c-pointers-versus-addresses/">[C] Pointers Versus Addresses, Arrays and Structs</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/2014/04/07/arduino-arduino-chu-ti-yan/">[Arduino] Arduino 初體驗</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog/">[Murmur] Celebrating the Birth of My Blog</a>
+      </li>
+    
+  </ul>
+</section>
 
-        
-      </div>
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/wchuang">@wchuang</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'wchuang',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+
     </div>
   </div>
-</div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - WEI-CHENG HUANG -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
 
-    <footer id="footer" class="her-row">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-1">
-  <a href="/"><h4>Home</h4></a>
-</div>
-
-<div class="col-md-2">
-  <div class="social-icon-list">
-    
-    <a href="https://twitter.com/huang_wc"><img src="/images/glyphicons_social_31_twitter.png"/></a>
-    
-
-    
-    <a href="https://github.com/wchuang"><img src="/images/glyphicons_social_21_github.png"/></a>
-    
-
-    
-    <a href="mailto:wchuang@outlook.com"><img src="/images/glyphicons_social_39_e-mail.png"/></a>
-    
-  </div>
-</div>
-
-<div class="pull-right">
-  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
-</div>
-
-
-    </div>
-  </div>
 </footer>
+  
 
-  </body>
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
 </html>
