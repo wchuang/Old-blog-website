@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://wchuang.github.io/sitemap.xml 
+Sitemap: http://blog.wchuang.me/sitemap.xml 

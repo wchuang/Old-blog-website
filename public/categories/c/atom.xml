@@ -2,10 +2,10 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
 
   <title><![CDATA[Category: C | @wchuang's Blog]]></title>
-  <link href="http://wchuang.github.io/categories/c/atom.xml" rel="self"/>
-  <link href="http://wchuang.github.io/"/>
-  <updated>2014-08-07T03:13:23+08:00</updated>
-  <id>http://wchuang.github.io/</id>
+  <link href="http://blog.wchuang.me/categories/c/atom.xml" rel="self"/>
+  <link href="http://blog.wchuang.me/"/>
+  <updated>2014-08-07T14:23:08+08:00</updated>
+  <id>http://blog.wchuang.me/</id>
   <author>
     <name><![CDATA[WEI-CHENG HUANG]]></name>
     <email><![CDATA[wchuang@outlook.com]]></email>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[[C] Pointers Versus Addresses, Arrays and Structs]]></title>
-    <link href="http://wchuang.github.io/post/2014/04/14/c-pointers-versus-addresses/"/>
+    <link href="http://blog.wchuang.me/post/2014/04/14/c-pointers-versus-addresses/"/>
     <updated>2014-04-14T16:27:31+08:00</updated>
-    <id>http://wchuang.github.io/post/2014/04/14/c-pointers-versus-addresses</id>
+    <id>http://blog.wchuang.me/post/2014/04/14/c-pointers-versus-addresses</id>
     <content type="html"><![CDATA[
 ]]></content>
   </entry>
