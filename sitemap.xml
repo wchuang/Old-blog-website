@@ -1,45 +1,43 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>
-            http://wchuang.github.io/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog/
-        </loc>
-        <lastmod>2014-08-06T17:51:10+08:00</lastmod>
+        <loc>http://blog.wchuang.me/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog/</loc>
+        <lastmod>2014-08-07T03:15:28+08:00</lastmod>
     </url>
     <url>
-        <loc>http://wchuang.github.io/post/2014/04/07/arduino-arduino-chu-ti-yan/</loc>
-        <lastmod>2014-08-06T17:51:10+08:00</lastmod>
+        <loc>http://blog.wchuang.me/post/2014/04/07/arduino-arduino-chu-ti-yan/</loc>
+        <lastmod>2014-08-07T03:15:28+08:00</lastmod>
     </url>
     <url>
-        <loc>http://wchuang.github.io/post/2014/04/14/c-pointers-versus-addresses/</loc>
-        <lastmod>2014-08-06T17:51:10+08:00</lastmod>
+        <loc>http://blog.wchuang.me/post/2014/04/14/c-pointers-versus-addresses/</loc>
+        <lastmod>2014-08-07T03:15:28+08:00</lastmod>
     </url>
     <url>
-        <loc>http://wchuang.github.io/post/2014/04/16/coding-online-judge/</loc>
-        <lastmod>2014-08-06T17:51:10+08:00</lastmod>
+        <loc>http://blog.wchuang.me/post/2014/04/16/coding-online-judge/</loc>
+        <lastmod>2014-08-07T03:15:28+08:00</lastmod>
     </url>
     <url>
-        <loc>http://wchuang.github.io/about_me/</loc>
-        <lastmod>2014-08-07T02:34:06+08:00</lastmod>
+        <loc>http://blog.wchuang.me/about_me/</loc>
+        <lastmod>2014-08-07T03:15:28+08:00</lastmod>
     </url>
     <url>
-        <loc>http://wchuang.github.io/archives/</loc>
-        <lastmod>2014-08-06T17:51:10+08:00</lastmod>
+        <loc>http://blog.wchuang.me/archives/</loc>
+        <lastmod>2014-08-07T03:15:28+08:00</lastmod>
     </url>
     <url>
-        <loc>http://wchuang.github.io/blog/archives/</loc>
-        <lastmod>2014-08-06T17:51:10+08:00</lastmod>
+        <loc>http://blog.wchuang.me/blog/archives/</loc>
+        <lastmod>2014-08-07T03:15:28+08:00</lastmod>
     </url>
     <url>
-        <loc>http://wchuang.github.io/</loc>
-        <lastmod>2014-08-06T17:51:10+08:00</lastmod>
+        <loc>http://blog.wchuang.me/</loc>
+        <lastmod>2014-08-07T03:15:28+08:00</lastmod>
     </url>
     <url>
-        <loc>http://wchuang.github.io/posts/</loc>
-        <lastmod>2014-08-06T17:51:10+08:00</lastmod>
+        <loc>http://blog.wchuang.me/posts/</loc>
+        <lastmod>2014-08-07T03:15:28+08:00</lastmod>
     </url>
     <url>
-        <loc>http://wchuang.github.io/robots.txt</loc>
-        <lastmod>2014-08-06T17:51:10+08:00</lastmod>
+        <loc>http://blog.wchuang.me/robots.txt</loc>
+        <lastmod>2014-08-07T03:15:28+08:00</lastmod>
     </url>
 </urlset>
