@@ -4,7 +4,7 @@
   <title><![CDATA[@wchuang's Blog]]></title>
   <link href="http://blog.wchuang.me/atom.xml" rel="self"/>
   <link href="http://blog.wchuang.me/"/>
-  <updated>2014-08-07T14:23:08+08:00</updated>
+  <updated>2014-08-12T00:14:37+08:00</updated>
   <id>http://blog.wchuang.me/</id>
   <author>
     <name><![CDATA[WEI-CHENG HUANG]]></name>
@@ -62,7 +62,7 @@
 <p>安裝介紹相關的文章谷歌已經很多了～就不再寫了</p>
 
 <ul>
-<li><p>買原廠正版的吧: 原本想要買 Arduino mega 2560 板，但因為原廠的要一千八百多，筆者想說是實驗用途以及自己剛接觸，先用非原廠的吧，所以在X瓏訂了一塊 (NTD 650)，但要 upload 時，才發現程式無法上傳，不知道是要自己灌 bootloader 還是壞了？理論上應該要灌好啊啊啊。之後也去X華電子試了 Uno (非原廠)，但結果也是一樣 Q_Q (賽狼)。噴出的錯誤訊息是: <code>avrdude: stk500v2_ReceiveMessage(): timeout</code>、、、、、<code>avrdude: stk500v2_getsync(): timeout communicating with programmer</code>，嘗試了一些做法</p>
+<li>買原廠正版的吧: 原本想要買 Arduino mega 2560 板，但因為原廠的要一千八百多，筆者想說是實驗用途以及自己剛接觸，先用非原廠的吧，所以在X瓏訂了一塊 (NTD 650)，但要 upload 時，才發現程式無法上傳，不知道是要自己灌 bootloader 還是壞了？理論上應該要灌好啊啊啊。之後也去X華電子試了 Uno (非原廠)，但結果也是一樣 Q_Q (賽狼)。噴出的錯誤訊息是: <code>avrdude: stk500v2_ReceiveMessage(): timeout</code>、、、、、<code>avrdude: stk500v2_getsync(): timeout communicating with programmer</code>，嘗試了一些做法
 
 <ul>
 <li>(X) 有人說程式碼裡面不要包含&#8221;!!!&ldquo;，否則 bootloader 會認為是 escape，不過不是這個問題</li>
@@ -72,20 +72,20 @@
 <li>(O) 買一塊新的，最後還是選擇這個..</li>
 </ul>
 </li>
-<li><p>沒有 Multi-Thread: 由於板子不是那麼高階(咦?)，所以官方表示不支援多執行緒，也就是說多個 methods 沒辦法同時做到，一定得在 loop 裡面一個接著一個跑，這是件還滿囧的事情，不過也有一些 libraries 模擬多執行緒的實作方式，來達到類似效果，但不太適用我的情況，且效果不太好 via. <a href="http://goo.gl/X2uFL5">Protothreads</a></p></li>
-<li><p><code>tone()</code> method 同一時間只能播一個: <code>tone()</code> 這個方法可以產生特定頻率及特定長短時間的音波，筆者在多個 pin 上外接許多蜂鳴器當作 output，而每個 buzzer 都是單獨觸發的個體，但卡到前一點的原因以及此點因素而作罷</p></li>
-<li><p>與 Processing 完美搭配: 通常你會想拿那些從 serial 傳過來的 Arduino 資料在電腦上做些事情，比如說寫檔案、播音樂等，在還沒發現 Processing 之前，筆者本來想用 serial programming 硬幹，不過還好有這強大的 programming language / software，幫我做到了這些事情。它的優點有很多，open source、跨平台、讓不會寫程式的人可以較容易的使用、也可以繪圖 (2D/3D)，以及有多種 libraries 可以使用，總之，功能相當強大，有興趣的話可以看下這篇 <a href="http://goo.gl/6D3ls">入門程式設計的好工具 Processing</a>、<a href="http://goo.gl/zvWuk">Let&rsquo;s begin!</a></p></li>
-<li><p>(待續&hellip;)</p></li>
+<li>沒有 Multi-Thread: 由於板子不是那麼高階(咦?)，所以官方表示不支援多執行緒，也就是說多個 methods 沒辦法同時做到，一定得在 loop 裡面一個接著一個跑，這是件還滿囧的事情，不過也有一些 libraries 模擬多執行緒的實作方式，來達到類似效果，但不太適用我的情況，且效果不太好 via. <a href="http://goo.gl/X2uFL5">Protothreads</a></li>
+<li><code>tone()</code> method 同一時間只能播一個: <code>tone()</code> 這個方法可以產生特定頻率及特定長短時間的音波，筆者在多個 pin 上外接許多蜂鳴器當作 output，而每個 buzzer 都是單獨觸發的個體，但卡到前一點的原因以及此點因素而作罷</li>
+<li>與 Processing 完美搭配: 通常你會想拿那些從 serial 傳過來的 Arduino 資料在電腦上做些事情，比如說寫檔案、播音樂等，在還沒發現 Processing 之前，筆者本來想用 serial programming 硬幹，不過還好有這強大的 programming language / software，幫我做到了這些事情。它的優點有很多，open source、跨平台、讓不會寫程式的人可以較容易的使用、也可以繪圖 (2D/3D)，以及有多種 libraries 可以使用，總之，功能相當強大，有興趣的話可以看下這篇 <a href="http://goo.gl/6D3ls">入門程式設計的好工具 Processing</a>、<a href="http://goo.gl/zvWuk">Let&rsquo;s begin!</a></li>
+<li>(待續&hellip;)</li>
 </ul>
 
 
 <hr />
 
 <ul>
-<li><p>底下整理近期購買移動式可變電阻時，詢問的店家資訊(還活著的)，要買其它電子材料的人也可以參考:</p>
+<li>底下整理近期購買移動式可變電阻時，詢問的店家資訊(還活著的)，要買其它電子材料的人也可以參考:
 
 <ul>
-<li><p>供應商，皆需大量訂購，最小訂購量大部分為375隻</p>
+<li>供應商，皆需大量訂購，最小訂購量大部分為375隻
 
 <ul>
 <li><a href="http://goo.gl/cKco9s">Mouser 貿澤電子</a>，電話: 02-2799-2096，地址: <a href="http://goo.gl/zVonNU">台北市內湖區瑞光路582號7樓</a></li>
@@ -96,7 +96,7 @@
 <li><a href="http://goo.gl/NkUsNA">穩得實業</a>，電話: 02-2917-5770，地址: <a href="http://goo.gl/zFhzCD">新北市新店區寶橋路188號6樓</a></li>
 </ul>
 </li>
-<li><p>材料行</p>
+<li>材料行
 
 <ul>
 <li><a href="http://goo.gl/xJMCug">良興電子-光華門市</a>，電話: 02-2393-0899，地址: <a href="http://goo.gl/s5mU8C">台北市中正區新生南路一段6號B1(國際電子廣場)</a></li>

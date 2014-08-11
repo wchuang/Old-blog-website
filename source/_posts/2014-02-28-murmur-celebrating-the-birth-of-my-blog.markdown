@@ -3,8 +3,7 @@ layout: post
 title: "[Murmur] Celebrating the birth of my blog"
 date: 2014-02-28 01:31:28 +0800
 comments: true
-categories: [Murmur]
-
+categories: Octopress Blog brew doctor ruby bundle install foxslide
 keywords: "Octopress, Blog, brew doctor, ruby, bundle install, foxslide"
 description: "Octopress website"
 ---

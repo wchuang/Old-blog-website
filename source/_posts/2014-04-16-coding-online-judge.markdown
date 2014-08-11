@@ -3,7 +3,7 @@ layout: post
 title: "[Coding] Online Judge"
 date: 2014-04-16 01:16:10 +0800
 comments: true
-categories: [Coding]
+categories: "code coding online-judge"
 keywords: "code, coding, online judge"
 description: "Intro of online judge"
 ---
