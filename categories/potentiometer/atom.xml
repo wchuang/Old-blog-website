@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[@wchuang's Blog]]></title>
-  <link href="http://blog.wchuang.me/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Potentiometer | @wchuang's Blog]]></title>
+  <link href="http://blog.wchuang.me/categories/potentiometer/atom.xml" rel="self"/>
   <link href="http://blog.wchuang.me/"/>
   <updated>2014-08-12T00:14:37+08:00</updated>
   <id>http://blog.wchuang.me/</id>
@@ -12,45 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[[Coding] Online Judge]]></title>
-    <link href="http://blog.wchuang.me/post/2014/04/16/coding-online-judge/"/>
-    <updated>2014-04-16T01:16:10+08:00</updated>
-    <id>http://blog.wchuang.me/post/2014/04/16/coding-online-judge</id>
-    <content type="html"><![CDATA[<ul>
-<li><p>使用較舊版的 ANSI C compilers (C90?)，不能用單行註解 <code>//</code>，需用 <code>/* ... */</code>，<a href="http://goo.gl/JQ5E2i">Ref.1</a>、<a href="http://goo.gl/tlIkva">Ref.2</a><!--more--></p></li>
-<li><p>Compile 時會加上這些參數: <code>-lm -lcrypt -O2 -pipe -ansi -DONLINE_JUDGE</code>，前兩個會幫你 link 到要用到的 libraries (math.h and crypt.h)，最後一個幫你定義一個 macro (ONLINE_JUDGE)，所以如果有不想被執行到的地方，可以用 <code>#ifndef ONLINE_JUDGE {...} #endif</code> 包住</p></li>
-<li><p>如果題目沒有說明會有幾筆輸入可以用迴圈包住並偵測輸入資料直到資料的最後一筆</p>
-
-<pre><code>  while (EOF != scanf("%ld %ld", &amp;input_1, &amp;input_2)) {
-      // Your code.
-  }
-</code></pre></li>
-<li><p>would update in few days..</p></li>
-</ul>
-
-
-<hr />
-
-<p>BTW. 兩個查詢 C/C++ 函式庫的地方:</p>
-
-<ul>
-<li><a href="http://goo.gl/h9lGN">cppreference.com</a></li>
-<li><a href="http://goo.gl/OoQx">cplusplus.com</a></li>
-</ul>
-
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[C] Pointers Versus Addresses, Arrays and Structs]]></title>
-    <link href="http://blog.wchuang.me/post/2014/04/14/c-pointers-versus-addresses/"/>
-    <updated>2014-04-14T16:27:31+08:00</updated>
-    <id>http://blog.wchuang.me/post/2014/04/14/c-pointers-versus-addresses</id>
-    <content type="html"><![CDATA[
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[[Arduino] Arduino 初體驗]]></title>
@@ -65,7 +26,7 @@
 <li>買原廠正版的吧: 原本想要買 Arduino mega 2560 板，但因為原廠的要一千八百多，筆者想說是實驗用途以及自己剛接觸，先用非原廠的吧，所以在X瓏訂了一塊 (NTD 650)，但要 upload 時，才發現程式無法上傳，不知道是要自己灌 bootloader 還是壞了？理論上應該要灌好啊啊啊。之後也去X華電子試了 Uno (非原廠)，但結果也是一樣 Q_Q (賽狼)。噴出的錯誤訊息是: <code>avrdude: stk500v2_ReceiveMessage(): timeout</code>、、、、、<code>avrdude: stk500v2_getsync(): timeout communicating with programmer</code>，嘗試了一些做法
 
 <ul>
-<li>(X) 有人說程式碼裡面不要包含&#8221;!!!&ldquo;，否則 bootloader 會認為是 escape，不過不是這個問題</li>
+<li>(X) 有人說程式碼裡面不要包含"!!!&ldquo;，否則 bootloader 會認為是 escape，不過不是這個問題</li>
 <li>(X) 也有人說在按下 upload 的同時也按下板子上的 reset button，等到 TX/RX LED 燈亮起時瞬間放掉 reset，然後要抓放掉的 timing，這..</li>
 <li>(X) 更改 boards.txt 設定檔，把 <code>mega2560.upload.protocol = wiring</code> 改為 <code>mega2560.upload.protocol = stk500v2</code> via. <a href="http://goo.gl/1Vhpgz">Modify boards.txt</a></li>
 <li>(X) 利用別塊板子當作 AVR ISP Programmer 來重燒 bootloader，不過我一直沒試成功就是.. Reference: <a href="http://goo.gl/JQbOo">Using an Arduino as an ISP-1</a> or <a href="http://goo.gl/CeLPmg">Using an Arduino as an ISP-2</a> or <a href="http://goo.gl/HGtZu">多種板子接法</a></li>
@@ -113,23 +74,6 @@
 </li>
 </ul>
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[[Murmur] Celebrating the Birth of My Blog]]></title>
-    <link href="http://blog.wchuang.me/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog/"/>
-    <updated>2014-02-28T01:31:28+08:00</updated>
-    <id>http://blog.wchuang.me/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog</id>
-    <content type="html"><![CDATA[<p>由於之前已經玩過 Octopress，本來想說重新翻翻 document，就可以無痛使用，但沒想到毛病還是很多 orz。<!-- more --></p>
-
-<p>先是 bundle install 的時候，發現 ruby 一定要在 1.9.3 以上，由於之前是用 1.9.2，而且滿久沒碰了，所以就<a href="http://goo.gl/SD915S">安裝一下</a>，接著又碰到一堆莫名其妙的問題 囧，像是 brew doctor 跟我說 “Error: /usr/bin occurs before /usr/local/bin”，照著它的建議也沒辦法解決，後來只好直接編輯 /etc/paths，把 /usr/local/bin 擺到 /usr/bin 前面，接著再 brew doctor，看看還有無問題，並照它的建議排除。最後，總算安全上壘惹，<a href="http://goo.gl/BNDdd">設定好對應的 github page</a>，rake generate，rake deploy，並 commit、push。</p>
-
-<p>由於完成後的版面實在太單調，我就換了 <a href="http://goo.gl/9gTiAH">foxslide</a> 這個 theme，再把版面調整我想要的樣子 (背景圖、font 的顏色、大小等)，可是卻發現它的原始設定中 found on 的地方不能放上 facebook，後來只好編輯 source/_includes/custom/asides/found_on.html，並加上 facebook.user 判斷及需要的圖片，<a href="http://goo.gl/SVdZh7">詳細做法</a>。</p>
-
-<p>設定完 twitter user 後，發現那區塊也是爛的！居然一直給我出現 &ldquo;loading tweets…&#8221;，原來是早在去年 twitter API v1 就<a href="http://goo.gl/VxbMYi">退休</a>了，也正式推出 v1.1，而 Unauthenticated requests 這種方式在 v1.1 中是不能用的，官方建議我們改用 <a href="http://goo.gl/znBFr">Embedded Timelines</a> 的方式。</p>
-
-<p>P.S. 好家在問題都得以解決，終於可以蓋牌結束這回合。XDD</p>
 ]]></content>
   </entry>
   
