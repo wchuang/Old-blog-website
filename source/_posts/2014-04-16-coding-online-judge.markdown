@@ -14,7 +14,7 @@ description: "Intro of online judge"
 
 * 如果題目沒有說明會有幾筆輸入可以用迴圈包住並偵測輸入資料直到資料的最後一筆
 
-        while (EOF != scanf("%ld %ld", &input_1, &input_2)) {
+		while (EOF != scanf("%ld %ld", &input_1, &input_2)) {
 			// Your code.
 		}
 	
