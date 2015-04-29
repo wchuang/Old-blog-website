@@ -5,7 +5,7 @@
 #url: http://wchuang.github.io
 url: http://blog.wchuang.me
 title: "@wchuang's Blog"
-subtitle: "Believe in yourself when no one else does..."
+subtitle: "魔鬼真的藏在細節裡"
 author: WEI-CHENG HUANG
 simple_search: http://google.com/search
 description: "wchuang's Blog - [http://blog.wchuang.me/]"
@@ -17,10 +17,10 @@ description: "wchuang's Blog - [http://blog.wchuang.me/]"
 date_format: "ordinal"
 
 # RSS / Email (optional) subscription links (change if using something like Feedburner)
-subscribe_rss: /atom.xml
-subscribe_email:
+#subscribe_rss: /atom.xml
+#subscribe_email:
 # RSS feeds can list your email address if you like
-email: wchuang@outlook.com
+#email: wchuang@outlook.com
 
 # ----------------------- #
 #    Jekyll & Plugins     #
