@@ -9,7 +9,11 @@
   <meta name="author" content="WEI-CHENG HUANG">
 
   
-  <meta name="description" content="簡單記錄如何建立給外部使用者或客戶測試的 AdHoc 版本 iOS app OTA (over the air)， 而如何產生憑證及 archive 出 AdHoc 就不再贅述了，網路也有很多資源。 重要的是描述下載位置的 HTML、描述 app 的 plist 檔案以及 app 的 .ipa &hellip;">
+  <meta name="description" content="#ifdef DEBUG
+# define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+# define DLog(...)
+#endif # &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -76,6 +80,66 @@
     <div id="content">
       <div class="blog-index">
   
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/post/2015/10/14/custom-nslog/">Custom NSLog</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-10-14T01:21:14+08:00" pubdate data-updated="true">Oct 14<span>th</span>, 2015</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><pre><code>#ifdef DEBUG
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define DLog(...)
+#endif
+
+#define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#ifdef DEBUG
+#   define ULog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
+#else
+#   define ULog(...)
+#endif
+</code></pre>
+
+<p>加入以上的 code 到 .pch 檔。</p>
+
+<p>這邊定義了三種不同的 log 方式</p>
+
+<ul>
+<li>DLog：相當於 NSLog，但它只有在 DEBUG 模式中才可以被使用。相較於 NSLog，自訂的 function 名稱及程式碼行數也會印出來。</li>
+<li>ALog：等同 NSLog，function 名稱及程式碼行數也會印出來。</li>
+<li>ULog：等於用 UIAlertView 印出 DLog。</li>
+</ul>
+
+</div>
+  
+  
+
+
+    </article>
   
   
     <article>
@@ -482,6 +546,10 @@
   <ul id="recent_posts">
     
       <li class="post">
+        <a href="/post/2015/10/14/custom-nslog/">Custom NSLog</a>
+      </li>
+    
+      <li class="post">
         <a href="/post/2015/04/08/distribute-an-ios-application-ota/">Distribute an iOS Application OTA</a>
       </li>
     
@@ -495,10 +563,6 @@
     
       <li class="post">
         <a href="/post/2014/04/16/coding-online-judge/">[Coding] Online Judge</a>
-      </li>
-    
-      <li class="post">
-        <a href="/post/2014/04/14/c-pointers-versus-addresses/">[C] Pointers Versus Addresses, Arrays and Structs</a>
       </li>
     
   </ul>

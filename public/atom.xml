@@ -4,7 +4,7 @@
   <title><![CDATA[@wchuang's Blog]]></title>
   <link href="http://blog.wchuang.me/atom.xml" rel="self"/>
   <link href="http://blog.wchuang.me/"/>
-  <updated>2015-04-30T01:47:22+08:00</updated>
+  <updated>2015-10-14T01:37:50+08:00</updated>
   <id>http://blog.wchuang.me/</id>
   <author>
     <name><![CDATA[WEI-CHENG HUANG]]></name>
@@ -12,6 +12,39 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Custom NSLog]]></title>
+    <link href="http://blog.wchuang.me/post/2015/10/14/custom-nslog/"/>
+    <updated>2015-10-14T01:21:14+08:00</updated>
+    <id>http://blog.wchuang.me/post/2015/10/14/custom-nslog</id>
+    <content type="html"><![CDATA[<pre><code>#ifdef DEBUG
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define DLog(...)
+#endif
+
+#define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#ifdef DEBUG
+#   define ULog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
+#else
+#   define ULog(...)
+#endif
+</code></pre>
+
+<p>加入以上的 code 到 .pch 檔。</p>
+
+<p>這邊定義了三種不同的 log 方式</p>
+
+<ul>
+<li>DLog：相當於 NSLog，但它只有在 DEBUG 模式中才可以被使用。相較於 NSLog，自訂的 function 名稱及程式碼行數也會印出來。</li>
+<li>ALog：等同 NSLog，function 名稱及程式碼行數也會印出來。</li>
+<li>ULog：等於用 UIAlertView 印出 DLog。</li>
+</ul>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Distribute an iOS Application OTA]]></title>
