@@ -1,0 +1,682 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>All Posts - @wchuang's Blog</title>
+  <meta name="author" content="WEI-CHENG HUANG">
+
+  
+  <meta name="description" content="All Posts Custom NSLog #ifdef DEBUG
+# define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+# &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.wchuang.me/posts">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="" rel="alternate" title="@wchuang's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53595104-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">@wchuang's Blog</a></h1>
+  
+    <h2>魔鬼真的藏在細節裡</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/atom.xml" class="nav-link">RSS</a></li>
+  <li><a href="https://github.com/wchuang">Github</a></li>
+  <li><a href="https://twitter.com/huang_wc">Twitter</a></li>
+  <li><a href="https://www.linkedin.com/pub/wei-cheng-huang/90/253/933">Linkedin</a></li>
+  <li><a href="https://www.facebook.com/weicccc">Facebook</a></li>
+  <li><a href="/about_me">About Me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="all-posts">
+  <div class="container">
+    <div class="row">
+      <div class="list-title col-md-offset-3 col-md-6">
+        <h4>All Posts</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-list">
+    <div class="container">
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/post/2015/10/14/custom-nslog/">Custom NSLog</a></h2>
+  
+  <p>
+    <pre><code>#ifdef DEBUG
+#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+#else
+#   define DLog(...)
+#endif
+
+#define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
+
+#ifdef DEBUG
+#   define ULog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
+#else
+#   define ULog(...)
+#endif
+</code></pre>
+
+
+
+
+<p>加入以上的 code 到 .pch 檔。</p>
+
+
+
+
+<p>這邊定義了三種不同的 log 方式</p>
+
+
+
+
+<ul>
+<li>DLog：相當於 NSLog，但它只有在 DEBUG 模式中才可以被使用。相較於 NSLog，自訂的 function 名稱及程式碼行數也會印出來。</li>
+<li>ALog：等同 NSLog，function 名稱及程式碼行數也會印出來。</li>
+<li>ULog：等於用 UIAlertView 印出 DLog。</li>
+</ul>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-10-14T01:21:14+08:00" pubdate data-updated="true">Oct 14<span>th</span>, 2015</time>
+    
+
+<span class="categories">
+  
+    <a class='category' href='/categories/ios/'>iOS</a>
+  
+</span>
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/post/2015/04/08/distribute-an-ios-application-ota/">Distribute an iOS Application OTA</a></h2>
+  
+  <p>
+    <p>簡單記錄如何建立給外部使用者或客戶測試的 AdHoc 版本</p>
+
+
+
+
+<p>iOS app OTA (over the air)，</p>
+
+
+
+
+<p>而如何產生憑證及 archive 出 AdHoc 就不再贅述了，網路也有很多資源。</p>
+
+
+
+
+<ol>
+<li><p>重要的是描述下載位置的 HTML、描述 app 的 plist 檔案以及 app 的 .ipa 檔案，找台伺服器來存放它們吧！這邊推薦使用 Dropbox 方便又好用，當然你也可以用自家 server 或其它 web storage services。</p></li>
+<li><p>.ipa 檔：AdHoc 出 .ipa 檔案，並上傳到 Dropbox 底下，點選分享後，會拿到一個分享連結，如 <a href="https://www.dropbox.com/s/ooxxaabbcc/ForTestingApp.ipa?dl=0">https://www.dropbox.com/s/ooxxaabbcc/ForTestingApp.ipa?dl=0</a> ，把 www.dropbox.com 改成 dl.dropboxusercontent.com 及 ?dl=0 拿掉，會變成 &ndash;> <a href="https://dl.dropboxusercontent.com/s/ooxxaabbcc/ForTestingApp.ipa">https://dl.dropboxusercontent.com/s/ooxxaabbcc/ForTestingApp.ipa</a> 。</p></li>
+<li><p>plist 檔：加入一個 Array 的 key，名稱取為 assets，負責描述 .ipa、app icon 兩張（57 * 57）及 (512 * 512) 的分享連結路徑 (與上述 .ipa 檔案ㄧ樣，需放在 dropbox 中，並開啟分享取得連結)，如果不放圖片的話，下載中就看不到 app 的 icon 囉。再加入一個 Dictionary 的 key，名稱取為 metadata，描述 app 相關資訊，如 bundle-identifier、title 或 subtitle 等等。最後一樣開啟分享取得連結。</p></li>
+<li><p>HTML 檔：最後是 HTML，拿來記錄上述 plist 檔的分享位置，並做個畫面呈現給使用者點選下載，可以簡單放上下列程式。</p>
+
+<pre><code> &lt;a href="itms-services://?action=download-manifest&amp;url=
+ https://dl.dropboxusercontent.com/s/ooxxaabbcc/ForTestingApp.plist"&gt;
+ Install this awesome app!&lt;/a&gt;
+</code></pre></li>
+</ol>
+
+
+
+
+<p>完成後你就可以把 HTML 的連結給你的朋友或客戶測試囉，不過要記得把手機的 UDID 加進去 Provisioning Profile。</p>
+
+
+
+
+<p>以上，有不清楚的地方歡迎指教 :p</p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-04-08T00:53:56+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2015</time>
+    
+
+<span class="categories">
+  
+    <a class='category' href='/categories/adhoc/'>AdHoc</a>, <a class='category' href='/categories/ota/'>OTA</a>, <a class='category' href='/categories/distribute/'>distribute</a>, <a class='category' href='/categories/ios/'>iOS</a>
+  
+</span>
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/post/2014/11/11/uiview-viewwithtag/">[UIView viewWithTag:]</a></h2>
+  
+  <p>
+    <p>這篇關於使用 [UIView viewWithTag:] 的文章，雖然已是兩年前的，但在下認為文章內所提及的觀念與用法還是很值得與大家分享。</p>
+
+
+
+
+<p>UIView 有個 tag 屬性以及相對應的方法 -viewWithTag:，讓我們可以輕易的存取特定的 view，而不需要額外的 reference。</p>
+
+
+
+
+<p>這邊作者分享了幾個使用上常見的問題：</p>
+
+
+
+
+<ul>
+<li><p>不要使用 tags 來儲存資料，例如：陣列存取物件的索引 (index)&hellip;，因為這是一件容易造成後續維護者難以理解你的 code 的一件事&hellip;底下是一個使用 button 來呈現圖片縮圖的例子，為了記得哪個按鈕被按到以及要呈現哪個對應於 array 中的圖片索引，所以利用 tag 來記錄。<del>(但其實還滿容易這麼幹的啊&hellip;在下也常這麼做，要好好檢討了orz)</del></p>
+
+<pre><code>  - (void)configureThumbnailButton:(UIButton *)thumbnailButton 
+                          forPhoto:(NSUInteger)photoIndex {
+      // ...
+      thumbnailButton.tag = 1 + photoIndex;
+      // ...
+  }
+
+  - (void)thumbnailButtonTapped:(id)sender {
+      UIButton *thumbnailButton = sender;
+      NSUInteger photoIndex = thumbnailButton.tag - 1;
+      id selectedPhoto = [self.photoArray objectAtIndex:photoIndex];
+      [self showPhoto:selectedPhoto];
+  }
+</code></pre></li>
+<li><p>存取 view 額外資料的幾個比較正確的方式：</p>
+
+<p>我們來探討一下為什麼會寫出上述例子的程式碼，其實也只是想要知道 button 對應的 index，或是 button 真正對應的圖片縮圖，此時更適合的方式應該是另外做一個 custom subClass 來儲存這些有用的額外資料，延續上述例子，應該可以這麼做：</p>
+
+<pre><code>  @interface PhotoThumbnailButton : UIButton
+
+  @property (nonatomic, assign) NSInteger photoIndex;
+  // OR
+  @property (nonatomic, strong) Photo *photo;
+
+  @end
+</code></pre>
+
+<p>這時候你會說，如果每次都要這樣也太麻煩了吧！的確，每次都要建個 subClass 有時可能不符合實際情況，底下也提供一個用法：Associated references。</p></li>
+<li><p><a href="http://goo.gl/6fM6Kq">Associated references</a>：提供了 objc_getAssociatedObject 以及 objc_setAssociatedObject 等方法，可以利用特定的 key 及 policy 存取特定的 obejct。如：</p>
+
+<pre><code>  #import &lt;objc/runtime.h&gt;
+
+  static char kThumbnailButtonAssociatedPhotoKey;
+
+  // ...
+
+  - (void)setAssociatedPhoto:(Photo *)associatedPhoto
+          forThumbnailButton:(UIButton *)thumbnailButton {
+      objc_setAssociatedObject(thumbnailButton,
+                               &amp;kThumbnailButtonAssociatedPhotoKey,
+                               associatedPhoto,
+                               OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  }
+
+  - (Photo *)associatedPhotoForThumbnailButton:(UIButton *)thumbnailButton {
+      return objc_getAssociatedObject(thumbnailButton,
+                                       &amp;kThumbnailButtonAssociatedPhotoKey);
+  }
+</code></pre>
+
+<p>存取時，</p>
+
+<pre><code>  - (void)configureThumbnailButtonForPhoto:(Photo *)photo {
+      // ...
+      [self setAssociatedPhoto:photo forThumbnailButton:thumbnailButton];
+      // ...
+  }
+
+  - (void)thumbnailButtonTapped {
+      Photo *photo = [self associatedPhotoForThumbnailButton:thumbnailButton];
+      // ...
+  }
+</code></pre>
+
+<p>真的是很酷啊&hellip; 可是，如果只是想要快速直接的知道是哪一個 view，這樣的方式還是不夠直覺&hellip;所以，有些情況下，你還是會想直接利用 UIView&rsquo;s tag 存取，但重點是請遵循 UIView&rsquo;s tag 是 UIView 的唯一識別、可讀性以及易維護性的觀念，而使用 #define 或 enum value 來設定 tags，在你之後的開發者會很感謝你的..XD，例如：</p>
+
+<pre><code>  enum MyViewTags {
+      kTitleLabelTag = 1,
+      kSendButtonTag,
+      kSomeOtherViewTag
+  };
+
+  // ...
+
+  if (sender.tag == kSendButtonTag) {
+      // ...
+  }
+</code></pre></li>
+<li><p>結論：</p>
+
+<ul>
+<li>不要使用 tags 來儲存資料 &ndash;> use sub-class or associated references resolving this.</li>
+<li>多利用 public properties of sub-class for getting references of subviews.</li>
+<li>If you do use tags, do not use magic numbers. Use named constants.</li>
+</ul>
+</li>
+<li><p><a href="http://goo.gl/0xHqWt">Ref.</a></p></li>
+</ul>
+
+
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-11-11T01:46:01+08:00" pubdate data-updated="true">Nov 11<span>th</span>, 2014</time>
+    
+
+<span class="categories">
+  
+    <a class='category' href='/categories/ios/'>ios</a>, <a class='category' href='/categories/objective-c/'>objective-c</a>, <a class='category' href='/categories/uikit/'>uikit</a>, <a class='category' href='/categories/uiview/'>uiview</a>, <a class='category' href='/categories/viewwithtag/'>viewwithtag</a>
+  
+</span>
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/post/2014/08/20/process-versus-thread/">Process Versus Thread</a></h2>
+  
+  <p>
+    <p>Process: 會在 CPU 的虛擬記憶體中分配 address，而每個 process 的 memory space 是彼此獨立且分開的 (系統資源不共享)。系統真正同時在運行的 process 數量最多不超過 CPU 數量，所以系統核心會在使用者無法察覺的時間內快速切換不同的 process，以達成同時處理多個 process 的假象。這裡又會牽扯到 <a href="http://goo.gl/X6Aypg">context switch</a>、<a href="http://goo.gl/C5wbHx">scheduling</a> 的問題。</p>
+
+
+
+
+<p>Thread: 同個 process 可能由多個不同的 thread 所組成，這些 thread 共享 process 的資料以及資源，但有可能執行不同區塊的程式碼。在處理資源分配的時候，常會有 <a href="http://goo.gl/8yFi">synchronization</a> 或 <a href="http://goo.gl/41N9k">deadlock</a> 等問題。</p>
+
+
+
+
+<p>總之，可以看成 process 是一個執行中的 programs，而 thread 就像是與程式同時運行的 functions。</p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-08-20T17:44:28+08:00" pubdate data-updated="true">Aug 20<span>th</span>, 2014</time>
+    
+
+<span class="categories">
+  
+    <a class='category' href='/categories/context-switch/'>context-switch</a>, <a class='category' href='/categories/process/'>process</a>, <a class='category' href='/categories/scheduling/'>scheduling</a>, <a class='category' href='/categories/thread/'>thread</a>, <a class='category' href='/categories/pai-cheng/'>排程</a>
+  
+</span>
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/post/2014/04/16/coding-online-judge/">[Coding] Online Judge</a></h2>
+  
+  <p>
+    <p><ul>
+<li><p>使用較舊版的 ANSI C compilers (C90?)，不能用單行註解 <code>//</code>，需用 <code>/<em> &hellip; </em>/</code>，<a href="http://goo.gl/JQ5E2i">Ref.1</a>、<a href="http://goo.gl/tlIkva">Ref.2</a></p>
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-16T01:16:10+08:00" pubdate data-updated="true">Apr 16<span>th</span>, 2014</time>
+    
+
+<span class="categories">
+  
+    <a class='category' href='/categories/code/'>code</a>, <a class='category' href='/categories/coding/'>coding</a>, <a class='category' href='/categories/online-judge/'>online-judge</a>
+  
+</span>
+
+
+  </span>
+
+  
+    <a class="full-article-link pull-right" rel="full-article" href="/post/2014/04/16/coding-online-judge/">Read on &rarr;</a>
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/post/2014/04/14/c-pointers-versus-addresses/">[C] Pointers Versus Addresses, Arrays and Structs</a></h2>
+  
+  <p>
+    
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-14T16:27:31+08:00" pubdate data-updated="true">Apr 14<span>th</span>, 2014</time>
+    
+
+<span class="categories">
+  
+    <a class='category' href='/categories/addresses/'>Addresses</a>, <a class='category' href='/categories/arrays/'>Arrays</a>, <a class='category' href='/categories/c/'>C</a>, <a class='category' href='/categories/pointers/'>Pointers</a>, <a class='category' href='/categories/structs/'>Structs</a>
+  
+</span>
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/post/2014/04/07/arduino-arduino-chu-ti-yan/">[Arduino] Arduino 初體驗</a></h2>
+  
+  <p>
+    <p><p>這是一篇剛接觸 Arduino 的心得(ㄘㄞˇㄌㄟˊ)記錄，有錯的地方歡迎指正 :P</p>
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-04-07T11:44:47+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
+    
+
+<span class="categories">
+  
+    <a class='category' href='/categories/arduino/'>Arduino</a>, <a class='category' href='/categories/arduino-mega-2560/'>Arduino-Mega-2560</a>, <a class='category' href='/categories/arduino-uno/'>Arduino-Uno</a>, <a class='category' href='/categories/potentiometer/'>Potentiometer</a>, <a class='category' href='/categories/processing/'>Processing</a>
+  
+</span>
+
+
+  </span>
+
+  
+    <a class="full-article-link pull-right" rel="full-article" href="/post/2014/04/07/arduino-arduino-chu-ti-yan/">Read on &rarr;</a>
+  
+</article>
+
+        </div>
+      </div>
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog/">[Murmur] Celebrating the Birth of My Blog</a></h2>
+  
+  <p>
+    <p><p>由於之前已經玩過 Octopress，本來想說重新翻翻 document，就可以無痛使用，但沒想到毛病還是很多 orz。</p>
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-28T01:31:28+08:00" pubdate data-updated="true">Feb 28<span>th</span>, 2014</time>
+    
+
+<span class="categories">
+  
+    <a class='category' href='/categories/blog/'>Blog</a>, <a class='category' href='/categories/octopress/'>Octopress</a>, <a class='category' href='/categories/brew/'>brew</a>, <a class='category' href='/categories/bundle/'>bundle</a>, <a class='category' href='/categories/doctor/'>doctor</a>, <a class='category' href='/categories/foxslide/'>foxslide</a>, <a class='category' href='/categories/install/'>install</a>, <a class='category' href='/categories/ruby/'>ruby</a>
+  
+</span>
+
+
+  </span>
+
+  
+    <a class="full-article-link pull-right" rel="full-article" href="/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog/">Read on &rarr;</a>
+  
+</article>
+
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - WEI-CHENG HUANG -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

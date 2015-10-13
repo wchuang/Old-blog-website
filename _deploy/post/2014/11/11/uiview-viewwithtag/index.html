@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>[UIView viewWithTag:] - @wchuang's Blog</title>
+  <meta name="author" content="WEI-CHENG HUANG">
+
+  
+  <meta name="description" content="[UIView viewWithTag:] 觀念">
+  <meta name="keywords" content="viewwithtag, uiview, objective-c, ios, uikit">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.wchuang.me/post/2014/11/11/uiview-viewwithtag">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="" rel="alternate" title="@wchuang's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53595104-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">@wchuang's Blog</a></h1>
+  
+    <h2>魔鬼真的藏在細節裡</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/atom.xml" class="nav-link">RSS</a></li>
+  <li><a href="https://github.com/wchuang">Github</a></li>
+  <li><a href="https://twitter.com/huang_wc">Twitter</a></li>
+  <li><a href="https://www.linkedin.com/pub/wei-cheng-huang/90/253/933">Linkedin</a></li>
+  <li><a href="https://www.facebook.com/weicccc">Facebook</a></li>
+  <li><a href="/about_me">About Me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">[UIView viewWithTag:]</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-11-11T01:46:01+08:00" pubdate data-updated="true">Nov 11<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>這篇關於使用 [UIView viewWithTag:] 的文章，雖然已是兩年前的，但在下認為文章內所提及的觀念與用法還是很值得與大家分享。</p>
+
+<p>UIView 有個 tag 屬性以及相對應的方法 -viewWithTag:，讓我們可以輕易的存取特定的 view，而不需要額外的 reference。</p>
+
+<p>這邊作者分享了幾個使用上常見的問題：</p>
+
+<ul>
+<li><p>不要使用 tags 來儲存資料，例如：陣列存取物件的索引 (index)&hellip;，因為這是一件容易造成後續維護者難以理解你的 code 的一件事&hellip;底下是一個使用 button 來呈現圖片縮圖的例子，為了記得哪個按鈕被按到以及要呈現哪個對應於 array 中的圖片索引，所以利用 tag 來記錄。<del>(但其實還滿容易這麼幹的啊&hellip;在下也常這麼做，要好好檢討了orz)</del></p>
+
+<pre><code>  - (void)configureThumbnailButton:(UIButton *)thumbnailButton 
+                          forPhoto:(NSUInteger)photoIndex {
+      // ...
+      thumbnailButton.tag = 1 + photoIndex;
+      // ...
+  }
+
+  - (void)thumbnailButtonTapped:(id)sender {
+      UIButton *thumbnailButton = sender;
+      NSUInteger photoIndex = thumbnailButton.tag - 1;
+      id selectedPhoto = [self.photoArray objectAtIndex:photoIndex];
+      [self showPhoto:selectedPhoto];
+  }
+</code></pre></li>
+<li><p>存取 view 額外資料的幾個比較正確的方式：</p>
+
+<p>我們來探討一下為什麼會寫出上述例子的程式碼，其實也只是想要知道 button 對應的 index，或是 button 真正對應的圖片縮圖，此時更適合的方式應該是另外做一個 custom subClass 來儲存這些有用的額外資料，延續上述例子，應該可以這麼做：</p>
+
+<pre><code>  @interface PhotoThumbnailButton : UIButton
+
+  @property (nonatomic, assign) NSInteger photoIndex;
+  // OR
+  @property (nonatomic, strong) Photo *photo;
+
+  @end
+</code></pre>
+
+<p>這時候你會說，如果每次都要這樣也太麻煩了吧！的確，每次都要建個 subClass 有時可能不符合實際情況，底下也提供一個用法：Associated references。</p></li>
+<li><p><a href="http://goo.gl/6fM6Kq">Associated references</a>：提供了 objc_getAssociatedObject 以及 objc_setAssociatedObject 等方法，可以利用特定的 key 及 policy 存取特定的 obejct。如：</p>
+
+<pre><code>  #import &lt;objc/runtime.h&gt;
+
+  static char kThumbnailButtonAssociatedPhotoKey;
+
+  // ...
+
+  - (void)setAssociatedPhoto:(Photo *)associatedPhoto
+          forThumbnailButton:(UIButton *)thumbnailButton {
+      objc_setAssociatedObject(thumbnailButton,
+                               &amp;kThumbnailButtonAssociatedPhotoKey,
+                               associatedPhoto,
+                               OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+  }
+
+  - (Photo *)associatedPhotoForThumbnailButton:(UIButton *)thumbnailButton {
+      return objc_getAssociatedObject(thumbnailButton,
+                                       &amp;kThumbnailButtonAssociatedPhotoKey);
+  }
+</code></pre>
+
+<p>存取時，</p>
+
+<pre><code>  - (void)configureThumbnailButtonForPhoto:(Photo *)photo {
+      // ...
+      [self setAssociatedPhoto:photo forThumbnailButton:thumbnailButton];
+      // ...
+  }
+
+  - (void)thumbnailButtonTapped {
+      Photo *photo = [self associatedPhotoForThumbnailButton:thumbnailButton];
+      // ...
+  }
+</code></pre>
+
+<p>真的是很酷啊&hellip; 可是，如果只是想要快速直接的知道是哪一個 view，這樣的方式還是不夠直覺&hellip;所以，有些情況下，你還是會想直接利用 UIView&rsquo;s tag 存取，但重點是請遵循 UIView&rsquo;s tag 是 UIView 的唯一識別、可讀性以及易維護性的觀念，而使用 #define 或 enum value 來設定 tags，在你之後的開發者會很感謝你的..XD，例如：</p>
+
+<pre><code>  enum MyViewTags {
+      kTitleLabelTag = 1,
+      kSendButtonTag,
+      kSomeOtherViewTag
+  };
+
+  // ...
+
+  if (sender.tag == kSendButtonTag) {
+      // ...
+  }
+</code></pre></li>
+<li><p>結論：</p>
+
+<ul>
+<li>不要使用 tags 來儲存資料 &ndash;> use sub-class or associated references resolving this.</li>
+<li>多利用 public properties of sub-class for getting references of subviews.</li>
+<li>If you do use tags, do not use magic numbers. Use named constants.</li>
+</ul>
+</li>
+<li><p><a href="http://goo.gl/0xHqWt">Ref.</a></p></li>
+</ul>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">WEI-CHENG HUANG</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-11-11T01:46:01+08:00" pubdate data-updated="true">Nov 11<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/ios/'>ios</a>, <a class='category' href='/categories/objective-c/'>objective-c</a>, <a class='category' href='/categories/uikit/'>uikit</a>, <a class='category' href='/categories/uiview/'>uiview</a>, <a class='category' href='/categories/viewwithtag/'>viewwithtag</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.wchuang.me/post/2014/11/11/uiview-viewwithtag/" data-via="huang_wc" data-counturl="http://blog.wchuang.me/post/2014/11/11/uiview-viewwithtag/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/post/2014/08/20/process-versus-thread/" title="Previous Post: Process versus Thread">&laquo; Process versus Thread</a>
+      
+      
+        <a class="basic-alignment right" href="/post/2015/04/08/distribute-an-ios-application-ota/" title="Next Post: Distribute an iOS application OTA">Distribute an iOS application OTA &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.wchuang.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/post/2015/10/14/custom-nslog/">Custom NSLog</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/2015/04/08/distribute-an-ios-application-ota/">Distribute an iOS Application OTA</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/2014/11/11/uiview-viewwithtag/">[UIView viewWithTag:]</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/2014/08/20/process-versus-thread/">Process Versus Thread</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/2014/04/16/coding-online-judge/">[Coding] Online Judge</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/wchuang">@wchuang</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'wchuang',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - WEI-CHENG HUANG -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>

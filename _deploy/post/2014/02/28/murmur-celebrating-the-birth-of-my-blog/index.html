@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>[Murmur] Celebrating the Birth of My Blog - @wchuang's Blog</title>
+  <meta name="author" content="WEI-CHENG HUANG">
+
+  
+  <meta name="description" content="Octopress website">
+  <meta name="keywords" content="Octopress, Blog, brew doctor, ruby, bundle install, foxslide">
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://blog.wchuang.me/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="" rel="alternate" title="@wchuang's Blog" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href='https://fonts.googleapis.com/css?family=Noto+Serif:400,700' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-53595104-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">@wchuang's Blog</a></h1>
+  
+    <h2>魔鬼真的藏在細節裡</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  
+  
+</ul>
+
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+  <li><a href="/atom.xml" class="nav-link">RSS</a></li>
+  <li><a href="https://github.com/wchuang">Github</a></li>
+  <li><a href="https://twitter.com/huang_wc">Twitter</a></li>
+  <li><a href="https://www.linkedin.com/pub/wei-cheng-huang/90/253/933">Linkedin</a></li>
+  <li><a href="https://www.facebook.com/weicccc">Facebook</a></li>
+  <li><a href="/about_me">About Me</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">[Murmur] Celebrating the Birth of My Blog</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-28T01:31:28+08:00" pubdate data-updated="true">Feb 28<span>th</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>由於之前已經玩過 Octopress，本來想說重新翻翻 document，就可以無痛使用，但沒想到毛病還是很多 orz。<!-- more --></p>
+
+<p>先是 bundle install 的時候，發現 ruby 一定要在 1.9.3 以上，由於之前是用 1.9.2，而且滿久沒碰了，所以就<a href="http://goo.gl/SD915S">安裝一下</a>，接著又碰到一堆莫名其妙的問題 囧，像是 brew doctor 跟我說 “Error: /usr/bin occurs before /usr/local/bin”，照著它的建議也沒辦法解決，後來只好直接編輯 /etc/paths，把 /usr/local/bin 擺到 /usr/bin 前面，接著再 brew doctor，看看還有無問題，並照它的建議排除。最後，總算安全上壘惹，<a href="http://goo.gl/BNDdd">設定好對應的 github page</a>，rake generate，rake deploy，並 commit、push。</p>
+
+<p>由於完成後的版面實在太單調，我就換了 <a href="http://goo.gl/9gTiAH">foxslide</a> 這個 theme，再把版面調整我想要的樣子 (背景圖、font 的顏色、大小等)，可是卻發現它的原始設定中 found on 的地方不能放上 facebook，後來只好編輯 source/_includes/custom/asides/found_on.html，並加上 facebook.user 判斷及需要的圖片，<a href="http://goo.gl/SVdZh7">詳細做法</a>。</p>
+
+<p>設定完 twitter user 後，發現那區塊也是爛的！居然一直給我出現 &ldquo;loading tweets…&#8221;，原來是早在去年 twitter API v1 就<a href="http://goo.gl/VxbMYi">退休</a>了，也正式推出 v1.1，而 Unauthenticated requests 這種方式在 v1.1 中是不能用的，官方建議我們改用 <a href="http://goo.gl/znBFr">Embedded Timelines</a> 的方式。</p>
+
+<p>P.S. 好家在問題都得以解決，終於可以蓋牌結束這回合。XDD</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">WEI-CHENG HUANG</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-02-28T01:31:28+08:00" pubdate data-updated="true">Feb 28<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/blog/'>Blog</a>, <a class='category' href='/categories/octopress/'>Octopress</a>, <a class='category' href='/categories/brew/'>brew</a>, <a class='category' href='/categories/bundle/'>bundle</a>, <a class='category' href='/categories/doctor/'>doctor</a>, <a class='category' href='/categories/foxslide/'>foxslide</a>, <a class='category' href='/categories/install/'>install</a>, <a class='category' href='/categories/ruby/'>ruby</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.wchuang.me/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog/" data-via="huang_wc" data-counturl="http://blog.wchuang.me/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/post/2014/04/07/arduino-arduino-chu-ti-yan/" title="Next Post: [Arduino] Arduino 初體驗">[Arduino] Arduino 初體驗 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+  <aside class="sidebar">
+   
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:blog.wchuang.me" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/post/2015/10/14/custom-nslog/">Custom NSLog</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/2015/04/08/distribute-an-ios-application-ota/">Distribute an iOS Application OTA</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/2014/11/11/uiview-viewwithtag/">[UIView viewWithTag:]</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/2014/08/20/process-versus-thread/">Process Versus Thread</a>
+      </li>
+    
+      <li class="post">
+        <a href="/post/2014/04/16/coding-online-judge/">[Coding] Online Judge</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>GitHub Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/wchuang">@wchuang</a> on GitHub
+  
+  <script type="text/javascript">
+    $(document).ready(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'wchuang',
+            count: 0,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+
+
+
+  
+</aside>
+
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2015 - WEI-CHENG HUANG -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) {return;}
+  js = d.createElement(s); js.id = id; js.async = true;
+  js.src = "//connect.facebook.net/en_US/all.js#appId=212934732101925&xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = '//platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+<script>
+  $(document).ready(function() {  
+  var stickyNavTop = $('nav').offset().top;  
+    
+  var stickyNav = function(){  
+  var scrollTop = $(window).scrollTop();  
+         
+  if (scrollTop > stickyNavTop) {   
+      $('nav').addClass('sticky');  
+  } else {  
+      $('nav').removeClass('sticky');   
+  }  
+  };  
+    
+  stickyNav();  
+    
+  $(window).scroll(function() {  
+      stickyNav();  
+  });  
+  });  
+</script>
+
+
+</body>
+</html>
