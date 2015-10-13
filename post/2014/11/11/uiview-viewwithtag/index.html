@@ -5,16 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>@wchuang's Blog</title>
+  <title>[UIView viewWithTag:] - @wchuang's Blog</title>
   <meta name="author" content="WEI-CHENG HUANG">
 
   
-  <meta name="description" content="#ifdef DEBUG
-# define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#else
-# define DLog(...)
-#endif # &hellip;">
-  
+  <meta name="description" content="[UIView viewWithTag:] 觀念">
+  <meta name="keywords" content="viewwithtag, uiview, objective-c, ios, uikit">
 
   <!-- http://t.co/dKP3o1e -->
   <meta name="HandheldFriendly" content="True">
@@ -22,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://blog.wchuang.me">
+  <link rel="canonical" href="http://blog.wchuang.me/post/2014/11/11/uiview-viewwithtag">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="" rel="alternate" title="@wchuang's Blog" type="application/atom+xml">
@@ -78,132 +74,12 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/post/2015/10/14/custom-nslog/">Custom NSLog</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-10-14T01:21:14+08:00" pubdate data-updated="true">Oct 14<span>th</span>, 2015</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><pre><code>#ifdef DEBUG
-#   define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#else
-#   define DLog(...)
-#endif
-
-#define ALog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-
-#ifdef DEBUG
-#   define ULog(fmt, ...)  { UIAlertView *alert = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"%s\n [Line %d] ", __PRETTY_FUNCTION__, __LINE__] message:[NSString stringWithFormat:fmt, ##__VA_ARGS__]  delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil]; [alert show]; }
-#else
-#   define ULog(...)
-#endif
-</code></pre>
-
-<p>加入以上的 code 到 .pch 檔。</p>
-
-<p>這邊定義了三種不同的 log 方式</p>
-
-<ul>
-<li>DLog：相當於 NSLog，但它只有在 DEBUG 模式中才可以被使用。相較於 NSLog，自訂的 function 名稱及程式碼行數也會印出來。</li>
-<li>ALog：等同 NSLog，function 名稱及程式碼行數也會印出來。</li>
-<li>ULog：等於用 UIAlertView 印出 DLog。</li>
-</ul>
-
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/post/2015/04/08/distribute-an-ios-application-ota/">Distribute an iOS Application OTA</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-04-08T00:53:56+08:00" pubdate data-updated="true">Apr 8<span>th</span>, 2015</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>簡單記錄如何建立給外部使用者或客戶測試的 AdHoc 版本</p>
-
-<p>iOS app OTA (over the air)，</p>
-
-<p>而如何產生憑證及 archive 出 AdHoc 就不再贅述了，網路也有很多資源。</p>
-
-<ol>
-<li><p>重要的是描述下載位置的 HTML、描述 app 的 plist 檔案以及 app 的 .ipa 檔案，找台伺服器來存放它們吧！這邊推薦使用 Dropbox 方便又好用，當然你也可以用自家 server 或其它 web storage services。</p></li>
-<li><p>.ipa 檔：AdHoc 出 .ipa 檔案，並上傳到 Dropbox 底下，點選分享後，會拿到一個分享連結，如 <a href="https://www.dropbox.com/s/ooxxaabbcc/ForTestingApp.ipa?dl=0">https://www.dropbox.com/s/ooxxaabbcc/ForTestingApp.ipa?dl=0</a> ，把 www.dropbox.com 改成 dl.dropboxusercontent.com 及 ?dl=0 拿掉，會變成 &ndash;> <a href="https://dl.dropboxusercontent.com/s/ooxxaabbcc/ForTestingApp.ipa">https://dl.dropboxusercontent.com/s/ooxxaabbcc/ForTestingApp.ipa</a> 。</p></li>
-<li><p>plist 檔：加入一個 Array 的 key，名稱取為 assets，負責描述 .ipa、app icon 兩張（57 * 57）及 (512 * 512) 的分享連結路徑 (與上述 .ipa 檔案ㄧ樣，需放在 dropbox 中，並開啟分享取得連結)，如果不放圖片的話，下載中就看不到 app 的 icon 囉。再加入一個 Dictionary 的 key，名稱取為 metadata，描述 app 相關資訊，如 bundle-identifier、title 或 subtitle 等等。最後一樣開啟分享取得連結。</p></li>
-<li><p>HTML 檔：最後是 HTML，拿來記錄上述 plist 檔的分享位置，並做個畫面呈現給使用者點選下載，可以簡單放上下列程式。</p>
-
-<pre><code> &lt;a href="itms-services://?action=download-manifest&amp;url=
- https://dl.dropboxusercontent.com/s/ooxxaabbcc/ForTestingApp.plist"&gt;
- Install this awesome app!&lt;/a&gt;
-</code></pre></li>
-</ol>
-
-
-<p>完成後你就可以把 HTML 的連結給你的朋友或客戶測試囉，不過要記得把手機的 UDID 加進去 Provisioning Profile。</p>
-
-<p>以上，有不清楚的地方歡迎指教 :p</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/post/2014/11/11/uiview-viewwithtag/">[UIView viewWithTag:]</a></h1>
+      <h1 class="entry-title">[UIView viewWithTag:]</h1>
     
     
       <p class="meta">
@@ -226,7 +102,7 @@
   </header>
 
 
-  <div class="entry-content"><p>這篇關於使用 [UIView viewWithTag:] 的文章，雖然已是兩年前的，但在下認為文章內所提及的觀念與用法還是很值得與大家分享。</p>
+<div class="entry-content"><p>這篇關於使用 [UIView viewWithTag:] 的文章，雖然已是兩年前的，但在下認為文章內所提及的觀念與用法還是很值得與大家分享。</p>
 
 <p>UIView 有個 tag 屬性以及相對應的方法 -viewWithTag:，讓我們可以輕易的存取特定的 view，而不需要額外的 reference。</p>
 
@@ -325,22 +201,16 @@
 </ul>
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/post/2014/08/20/process-versus-thread/">Process Versus Thread</a></h1>
-    
-    
-      <p class="meta">
-        
+  
+
+<span class="byline author vcard">Posted by <span class="fn">WEI-CHENG HUANG</span></span>
+
+      
 
 
 
@@ -352,186 +222,43 @@
   
 
 
-<time datetime="2014-08-20T17:44:28+08:00" pubdate data-updated="true">Aug 20<span>th</span>, 2014</time>
-        
-      </p>
+<time datetime="2014-11-11T01:46:01+08:00" pubdate data-updated="true">Nov 11<span>th</span>, 2014</time>
+      
+
+<span class="categories">
+  
+    <a class='category' href='/categories/ios/'>ios</a>, <a class='category' href='/categories/objective-c/'>objective-c</a>, <a class='category' href='/categories/uikit/'>uikit</a>, <a class='category' href='/categories/uiview/'>uiview</a>, <a class='category' href='/categories/viewwithtag/'>viewwithtag</a>
+  
+</span>
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>Process: 會在 CPU 的虛擬記憶體中分配 address，而每個 process 的 memory space 是彼此獨立且分開的 (系統資源不共享)。系統真正同時在運行的 process 數量最多不超過 CPU 數量，所以系統核心會在使用者無法察覺的時間內快速切換不同的 process，以達成同時處理多個 process 的假象。這裡又會牽扯到 <a href="http://goo.gl/X6Aypg">context switch</a>、<a href="http://goo.gl/C5wbHx">scheduling</a> 的問題。</p>
-
-<p>Thread: 同個 process 可能由多個不同的 thread 所組成，這些 thread 共享 process 的資料以及資源，但有可能執行不同區塊的程式碼。在處理資源分配的時候，常會有 <a href="http://goo.gl/8yFi">synchronization</a> 或 <a href="http://goo.gl/41N9k">deadlock</a> 等問題。</p>
-
-<p>總之，可以看成 process 是一個執行中的 programs，而 thread 就像是與程式同時運行的 functions。</p>
+      <div class="sharing">
+  
+  <a href="//twitter.com/share" class="twitter-share-button" data-url="http://blog.wchuang.me/post/2014/11/11/uiview-viewwithtag/" data-via="huang_wc" data-counturl="http://blog.wchuang.me/post/2014/11/11/uiview-viewwithtag/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
 </div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
+    
+    <p class="meta">
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/post/2014/04/16/coding-online-judge/">[Coding] Online Judge</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-16T01:16:10+08:00" pubdate data-updated="true">Apr 16<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><ul>
-<li><p>使用較舊版的 ANSI C compilers (C90?)，不能用單行註解 <code>//</code>，需用 <code>/* ... */</code>，<a href="http://goo.gl/JQ5E2i">Ref.1</a>、<a href="http://goo.gl/tlIkva">Ref.2</a></div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/post/2014/04/16/coding-online-judge/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
+        <a class="basic-alignment left" href="/post/2014/08/20/process-versus-thread/" title="Previous Post: Process versus Thread">&laquo; Process versus Thread</a>
       
-  <header>
-    
-      <h1 class="entry-title"><a href="/post/2014/04/14/c-pointers-versus-addresses/">[C] Pointers Versus Addresses, Arrays and Structs</a></h1>
-    
-    
-      <p class="meta">
-        
+      
+        <a class="basic-alignment right" href="/post/2015/04/08/distribute-an-ios-application-ota/" title="Next Post: Distribute an iOS application OTA">Distribute an iOS application OTA &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-14T16:27:31+08:00" pubdate data-updated="true">Apr 14<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content">
 </div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/post/2014/04/07/arduino-arduino-chu-ti-yan/">[Arduino] Arduino 初體驗</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-04-07T11:44:47+08:00" pubdate data-updated="true">Apr 7<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>這是一篇剛接觸 Arduino 的心得(ㄘㄞˇㄌㄟˊ)記錄，有錯的地方歡迎指正 :P </div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/post/2014/04/07/arduino-arduino-chu-ti-yan/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog/">[Murmur] Celebrating the Birth of My Blog</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-02-28T01:31:28+08:00" pubdate data-updated="true">Feb 28<span>th</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>由於之前已經玩過 Octopress，本來想說重新翻翻 document，就可以無痛使用，但沒想到毛病還是很多 orz。</div>
-  
-  
-    <footer>
-      <a rel="full-article" href="/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog/">Read on &rarr;</a>
-    </footer>
-  
-
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
-<aside class="sidebar">
+  <aside class="sidebar">
    
 <form action="http://google.com/search" method="get">
   <fieldset role="search">
@@ -571,7 +298,7 @@
 <section>
   <h1>GitHub Repos</h1>
   <ul id="gh_repos">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   
   <a href="https://github.com/wchuang">@wchuang</a> on GitHub
@@ -603,6 +330,7 @@
 
   
 </aside>
+
 
 
     </div>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Install | @wchuang's Blog]]></title>
+  <link href="http://blog.wchuang.me/categories/install/atom.xml" rel="self"/>
+  <link href="http://blog.wchuang.me/"/>
+  <updated>2015-10-14T02:27:55+08:00</updated>
+  <id>http://blog.wchuang.me/</id>
+  <author>
+    <name><![CDATA[WEI-CHENG HUANG]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[[Murmur] Celebrating the Birth of My Blog]]></title>
+    <link href="http://blog.wchuang.me/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog/"/>
+    <updated>2014-02-28T01:31:28+08:00</updated>
+    <id>http://blog.wchuang.me/post/2014/02/28/murmur-celebrating-the-birth-of-my-blog</id>
+    <content type="html"><![CDATA[<p>由於之前已經玩過 Octopress，本來想說重新翻翻 document，就可以無痛使用，但沒想到毛病還是很多 orz。<!-- more --></p>
+
+<p>先是 bundle install 的時候，發現 ruby 一定要在 1.9.3 以上，由於之前是用 1.9.2，而且滿久沒碰了，所以就<a href="http://goo.gl/SD915S">安裝一下</a>，接著又碰到一堆莫名其妙的問題 囧，像是 brew doctor 跟我說 “Error: /usr/bin occurs before /usr/local/bin”，照著它的建議也沒辦法解決，後來只好直接編輯 /etc/paths，把 /usr/local/bin 擺到 /usr/bin 前面，接著再 brew doctor，看看還有無問題，並照它的建議排除。最後，總算安全上壘惹，<a href="http://goo.gl/BNDdd">設定好對應的 github page</a>，rake generate，rake deploy，並 commit、push。</p>
+
+<p>由於完成後的版面實在太單調，我就換了 <a href="http://goo.gl/9gTiAH">foxslide</a> 這個 theme，再把版面調整我想要的樣子 (背景圖、font 的顏色、大小等)，可是卻發現它的原始設定中 found on 的地方不能放上 facebook，後來只好編輯 source/_includes/custom/asides/found_on.html，並加上 facebook.user 判斷及需要的圖片，<a href="http://goo.gl/SVdZh7">詳細做法</a>。</p>
+
+<p>設定完 twitter user 後，發現那區塊也是爛的！居然一直給我出現 &ldquo;loading tweets…"，原來是早在去年 twitter API v1 就<a href="http://goo.gl/VxbMYi">退休</a>了，也正式推出 v1.1，而 Unauthenticated requests 這種方式在 v1.1 中是不能用的，官方建議我們改用 <a href="http://goo.gl/znBFr">Embedded Timelines</a> 的方式。</p>
+
+<p>P.S. 好家在問題都得以解決，終於可以蓋牌結束這回合。XDD</p>
+]]></content>
+  </entry>
+  
+</feed>
