@@ -3,8 +3,8 @@ layout: post
 title: "[UIView viewWithTag:]"
 date: 2014-11-11 01:46:01 +0800
 comments: true
-categories: "viewwithtag uiview objective-c ios uikit"
-keywords: "viewwithtag, uiview, objective-c, ios, uikit"
+categories: "viewWithTag UIView Objective-C iOS UIKit"
+keywords: "viewWithTag, UIView, Objectice-C, iOS, UIKit"
 description: "[UIView viewWithTag:] 觀念"
 ---
 這篇關於使用 [UIView viewWithTag:] 的文章，雖然已是兩年前的，但在下認為文章內所提及的觀念與用法還是很值得與大家分享。
