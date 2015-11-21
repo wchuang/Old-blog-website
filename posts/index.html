@@ -9,10 +9,7 @@
   <meta name="author" content="WEI-CHENG HUANG">
 
   
-  <meta name="description" content="All Posts Custom NSLog #ifdef DEBUG
-# define DLog(fmt, ...) NSLog((@"%s [Line %d] " fmt), __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__);
-#else
-# &hellip;">
+  <meta name="description" content="All Posts PresentViewController Delay on UITableViewCell 最近開發常常遇到：當點選 UITableViewCell 時去呼叫 presentViewController:animated:completion:，欲開啟的 view &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -88,6 +85,77 @@
 
   <div class="article-list">
     <div class="container">
+      
+      
+      <div class="row">
+        <div class="col-md-offset-3 col-md-6">
+          <article>
+  <h2><a href="/post/2015/11/22/presentviewcontroller-delay-on-uitableviewcell/">PresentViewController Delay on UITableViewCell</a></h2>
+  
+  <p>
+    <p>最近開發常常遇到：當點選 UITableViewCell 時去呼叫 presentViewController:animated:completion:，欲開啟的 view controller 會延遲出現的問題，這個似乎是 iOS 7 的 bug，不過之前開發手機卻沒什麼遇到，直到最近開發 iPad 才發現。</p>
+
+
+
+
+<p>原因是當 UITableViewCell 的 selectionStyle 設為 UITableViewCellSelectionStyleNone，也就是希望不要出現點選效果時，造成沒有動畫效果去觸發 main runloop，所以 thread 好像是睡著了&hellip;</p>
+
+
+
+
+<p>解決方式：</p>
+
+
+
+
+<p>在呼叫 presentViewController:animated:completion: 後</p>
+
+
+
+
+<ul>
+<li>呼叫 CFRunLoopWakeUp(CFRunLoopGetCurrent())</li>
+<li>或用 GCD 在 main queue 執行一個空的 block：dispatch_async(dispatch_get_main_queue(), ^{})</li>
+<li>或用 GCD 在 main queue 直接呼叫 presentViewController:animated:completion:</li>
+</ul>
+
+
+
+
+<p>From: <a href="http://stackoverflow.com/questions/21075540/presentviewcontrolleranimatedyes-view-will-not-appear-until-user-taps-again">Stackoverflow 討論</a>, <a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/Multithreading/RunLoopManagement/RunLoopManagement.html">Thread run loops</a></p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2015-11-22T02:36:24+08:00" pubdate data-updated="true">Nov 22<span>nd</span>, 2015</time>
+    
+
+<span class="categories">
+  
+    <a class='category' href='/categories/uitableview/'>UITableView</a>, <a class='category' href='/categories/uitableviewcell/'>UITableViewCell</a>, <a class='category' href='/categories/ios/'>iOS</a>
+  
+</span>
+
+
+  </span>
+
+  
+</article>
+
+        </div>
+      </div>
       
       
       <div class="row">
